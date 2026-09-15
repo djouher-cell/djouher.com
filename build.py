@@ -164,7 +164,7 @@ def index():
     title = e(R["title"])
     links = "".join(
         f'<li><a href="{e(l["url"])}"><span class="pf">{e(l["name"])}</span>'
-        f'<span class="act up">{e(l.get("action") or ("Watch" if "watch?v=" in l["url"] else "Listen"))}<span class="sr"> to {title} on {e(l["name"])}</span> ↗</span></a></li>'
+        f'<span class="act up">{e(l.get("action") or ("Watch" if "watch?v=" in l["url"] else "Listen"))}<span class="sr">{"" if "watch?v=" in l["url"] else " to"} {title} on {e(l["name"])}</span> ↗</span></a></li>'
         for l in R["links"])
     follow = "".join(f'<li><a href="{e(p["url"])}" rel="me">{e(p["name"])}</a></li>' for p in A["profiles"])
     first = R["links"][0]
