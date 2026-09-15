@@ -65,7 +65,6 @@
       },
       {
         "name": "YouTube",
-        "label": "Watch the video",
         "url": "https://www.youtube.com/watch?v=vQgVZkjjlTA"
       },
       {
@@ -85,5 +84,10 @@
         "url": "https://tidal.com/album/501900586"
       }
     ]
+  },
+  "hero": {
+    "image": "img/hero",
+    "alt": "Djouher, dressed in white, kneels in a circle of blue light on a dark stage and looks up.",
+    "position": "50% 58%"
   }
 }

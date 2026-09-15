@@ -12,6 +12,11 @@ Official website of Djouher. One static page, no framework, no tracking.
 
 Artist bio, profiles and contact live in the `artist` block of `site.json`.
 
+## Design assets
+
+- `img/hero-*.webp`: hero photo (I Killed Her shoot). Replace both files to change it; alt text and crop position are in `site.json` → `hero`.
+- `fonts/bebas-neue.woff2`: Bebas Neue (SIL Open Font License), Latin subset, self-hosted.
+
 ## Local build
 
 ```

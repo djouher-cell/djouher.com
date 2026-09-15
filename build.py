@@ -26,44 +26,70 @@ DESC = (f"Official website of {A['name']}, North African indie-pop singer from K
         f"Listen to the {R['type'].lower()} “{R['title']}” on Spotify, Apple Music, YouTube and Deezer.")
 
 CSS = """
-:root{--bg:#070f1c;--fg:#ece9e2;--muted:#9aa3b3;--line:rgba(236,233,226,.16);color-scheme:dark}
+@font-face{font-family:"Bebas Neue";src:url(/fonts/bebas-neue.woff2) format("woff2");font-display:swap}
+:root{--bg:#000;--fg:#f2eee8;--muted:#a29d96;--line:rgba(242,238,232,.18);--accent:#e5483d;--d:"Bebas Neue",Impact,"Arial Narrow",sans-serif;--pad:clamp(1rem,4vw,2.5rem);color-scheme:dark}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:30rem;margin:0 auto;padding:clamp(2.5rem,8vw,5rem) 1.25rem 2.5rem}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.6 "Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:3.5rem}
 a{color:inherit}
-a:focus-visible{outline:2px solid var(--fg);outline-offset:4px;border-radius:2px}
-h1{margin:0 0 clamp(2.5rem,8vw,4rem);font-size:clamp(2.25rem,12vw,3.75rem);font-weight:300;line-height:1;letter-spacing:.3em;text-transform:uppercase}
-.label{margin:0 0 1rem;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-img{display:block;width:100%;height:auto;aspect-ratio:1;background:#0b1a30}
-h2{margin:0;font-weight:400}
-.title{margin-top:1.5rem;font-size:1.875rem;line-height:1.2;letter-spacing:-.01em}
-.meta{margin:.25rem 0 0;color:var(--muted)}
+a:focus-visible{outline:2px solid var(--fg);outline-offset:4px}
+img{display:block;max-width:100%;height:auto}
+h1,h2{margin:0;font-family:var(--d);font-weight:400;text-transform:uppercase;line-height:.86}
 ul{list-style:none;margin:0;padding:0}
-.listen{margin-top:2rem;border-top:1px solid var(--line)}
-.listen a{display:flex;justify-content:space-between;align-items:center;min-height:3.25rem;border-bottom:1px solid var(--line);text-decoration:none}
-.listen a:hover{color:#fff}
-.listen a:hover .go{transform:translate(2px,-2px)}
-.go{color:var(--muted);transition:transform .15s}
-.about{margin-top:clamp(3.5rem,10vw,5rem)}
-.about h2,footer h2{margin:0 0 1rem;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.about p{margin:0;color:#cfd3da}
+em{font:italic 400 1.0625rem/1.2 Georgia,"Times New Roman",serif;color:var(--accent);letter-spacing:0;text-transform:none}
+.up{font-size:.6875rem;letter-spacing:.22em;text-transform:uppercase}
+.skip{position:absolute;left:var(--pad);top:-4rem;z-index:9;background:var(--fg);color:var(--bg);padding:.6rem 1rem}
+.skip:focus{top:1rem}
+.top{position:absolute;inset:0 0 auto;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:1.25rem var(--pad)}
+.brand{display:none;font:400 1.625rem/1 var(--d);letter-spacing:.14em;text-decoration:none;text-transform:uppercase}
+.top nav{display:flex;justify-content:space-between;flex:1;gap:1rem}
+.top nav a,.bar a{text-decoration:none;padding:.5rem 0}
+.top nav a:hover,.bar a:hover{color:var(--accent)}
+.hero{position:relative;min-height:calc(100vh - 3.5rem);min-height:calc(100svh - 3.5rem);display:flex;align-items:flex-end;overflow:hidden;background:#03060c}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#000 0,rgba(0,0,0,.72) 24%,rgba(0,0,0,0) 55%)}
+.hero-in{position:relative;z-index:1;width:100%;padding:0 var(--pad) clamp(2rem,6vh,4rem);text-align:center}
+.hero h1{font-size:clamp(5.5rem,34.5vw,34rem);letter-spacing:.01em;margin:0 -.02em}
+.cta{margin:clamp(1rem,3vh,1.75rem) 0 0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.75rem 1.5rem}
+.btn{display:inline-flex;align-items:center;gap:.75em;min-height:2.875rem;padding:0 1.4rem;border:1px solid var(--fg);text-decoration:none;transition:background .2s,color .2s}
+.btn:hover{background:var(--fg);color:var(--bg)}
+.sec{max-width:84rem;margin:0 auto;padding:clamp(4.5rem,12vw,9rem) var(--pad) 0}
+.release{display:grid;gap:clamp(2rem,5vw,4.5rem)}
+.cover{width:100%;aspect-ratio:1;background:#0b1a30}
+.title{font-size:clamp(4rem,13vw,9.5rem);margin:.35rem 0 0}
+.meta{margin:1rem 0 2.25rem;color:var(--muted)}
+.listen{border-top:1px solid var(--line)}
+.listen a{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:4rem;border-bottom:1px solid var(--line);text-decoration:none}
+.pf{font:400 clamp(1.75rem,4vw,2.375rem)/1 var(--d);letter-spacing:.03em;text-transform:uppercase;transition:color .2s}
+.act{color:var(--muted);white-space:nowrap}
+.listen a:hover .pf{color:var(--accent)}
+.listen a:hover .act{color:var(--fg)}
+.about{display:grid;gap:1.5rem}
+.about h2,.foot h2{font-size:clamp(3rem,9vw,6.5rem)}
+.about p{margin:0;max-width:34em;font-size:clamp(1.125rem,2.1vw,1.5rem);line-height:1.5;color:#dcd8d1}
 cite{font-style:italic}
-footer{margin-top:clamp(3.5rem,10vw,5rem);padding-top:2rem;border-top:1px solid var(--line);font-size:.9375rem}
-.follow{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;margin-bottom:2rem}
-.follow a,.contact a{display:inline-block;padding:.35rem 0;text-decoration-color:var(--line);text-underline-offset:.25em}
-.follow a:hover,.contact a:hover{text-decoration-color:currentColor}
-.contact{margin:0 0 2rem}
-small{display:block;color:var(--muted);font-size:.8125rem}
+.foot{padding-bottom:3rem;display:grid;gap:3rem}
+.follow{display:flex;flex-wrap:wrap;gap:.25rem 1.75rem;margin-top:1.25rem}
+.follow a{font:400 clamp(1.75rem,4vw,2.5rem)/1.3 var(--d);letter-spacing:.03em;text-transform:uppercase;text-decoration:none}
+.follow a:hover{color:var(--accent)}
+.mail{display:inline-block;margin-top:1.25rem;font-size:clamp(1.125rem,2.4vw,1.5rem);text-underline-offset:.3em;text-decoration-thickness:1px}
+.legal{grid-column:1/-1;margin:0;padding-top:2rem;border-top:1px solid var(--line);color:var(--muted)}
+.bar{position:fixed;inset:auto 0 0;z-index:5;display:flex;align-items:center;gap:1rem;min-height:3.5rem;padding:0 var(--pad);background:#000;border-top:1px solid var(--line)}
+.bar b{font-weight:400;display:flex;align-items:center;gap:.6rem}
+.bar b::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--accent)}
+.bar i{font-style:normal;color:var(--muted);display:none}
+.bar span{margin-left:auto;display:flex;gap:1.25rem}
+.nf{min-height:100svh;display:grid;place-content:center;gap:1.5rem;text-align:center;padding:var(--pad)}
+.nf h1{font-size:clamp(4rem,14vw,10rem)}
+.brand.on{display:block}
 .sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.brand{margin:0 0 2.5rem;font-size:1.25rem;font-weight:300;letter-spacing:.3em;text-transform:uppercase}
-h1.title{margin:0 0 1rem;letter-spacing:-.01em;text-transform:none;font-weight:400}
-@media (min-width:56rem){.wrap{max-width:64rem;padding-inline:2.5rem}.release{display:grid;grid-template-columns:minmax(0,28rem) minmax(0,1fr);column-gap:4rem}.release .label{grid-column:1/-1}.info{align-self:end}.info .title{margin-top:0}.about,footer{margin-left:32rem}}
-@media (prefers-reduced-motion:reduce){.go{transition:none}}
+@media (min-width:40rem){.brand{display:block}.top nav{flex:none;gap:clamp(1.5rem,3vw,2.75rem)}.bar i{display:inline}}
+@media (min-width:60rem){.release{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end}.about,.foot{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.about p{padding-top:.6rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 """.strip()
-CSS = "".join(line.strip() for line in CSS.splitlines())
+CSS = "".join(line.strip() for line in CSS.splitlines()).replace("var(--pos,50% 50%)", S["hero"].get("position", "50% 50%"))
 CSS_HASH = base64.b64encode(hashlib.sha256(CSS.encode()).digest()).decode()
-CSP = f"default-src 'none'; img-src 'self'; style-src 'sha256-{CSS_HASH}'; base-uri 'none'; form-action 'none'"
+CSP = f"default-src 'none'; connect-src 'self'; img-src 'self'; font-src 'self'; style-src 'sha256-{CSS_HASH}'; base-uri 'none'; form-action 'none'"
 
 
 def jsonld():
@@ -94,7 +120,7 @@ def jsonld():
                       ensure_ascii=False, separators=(",", ":"))
 
 
-def head(title, desc, canonical=True, robots="index,follow,max-image-preview:large"):
+def head(title, desc, canonical=True, robots="index,follow,max-image-preview:large", preload=""):
     og = f"{D}{img}-1200.jpg"
     parts = [
         '<!doctype html><html lang="en"><head><meta charset="utf-8">',
@@ -121,52 +147,74 @@ def head(title, desc, canonical=True, robots="index,follow,max-image-preview:lar
             '<meta name="twitter:card" content="summary_large_image">',
         ]
     parts += [
-        '<meta name="theme-color" content="#070f1c">',
+        '<meta name="theme-color" content="#000000">',
         '<link rel="icon" href="/favicon.ico" sizes="32x32">',
         '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
         '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
+        '<link rel="preload" href="/fonts/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>',
+        preload,
         f"<style>{CSS}</style>",
     ]
     return "".join(parts)
 
 
 def index():
+    H = S["hero"]
+    hero = "/" + H["image"]
+    title = e(R["title"])
     links = "".join(
-        f'<li><a href="{e(l["url"])}">'
-        f'<span><span class="sr">{e(l.get("label") or "Listen")} – {e(R["title"])} on </span>{e(l["name"])}</span>'
-        f'<span class="go" aria-hidden="true">↗</span></a></li>'
+        f'<li><a href="{e(l["url"])}"><span class="pf">{e(l["name"])}</span>'
+        f'<span class="act up">{e(l.get("action") or ("Watch" if "watch?v=" in l["url"] else "Listen"))}<span class="sr"> to {title} on {e(l["name"])}</span> ↗</span></a></li>'
         for l in R["links"])
     follow = "".join(f'<li><a href="{e(p["url"])}" rel="me">{e(p["name"])}</a></li>' for p in A["profiles"])
+    first = R["links"][0]
+    apple = next((l for l in R["links"] if l["name"] == "Apple Music"), None)
+    bar_links = f'<a href="{e(first["url"])}">{e(first["name"])}</a>' + (f'<a href="{e(apple["url"])}">Apple Music</a>' if apple else "")
+    preload = (f'<link rel="preload" as="image" type="image/webp" imagesrcset="{hero}-800.webp 800w, {hero}-1400.webp 1400w" '
+               'imagesizes="100vw" fetchpriority="high">')
+    year = max(date.year, dt.date.today().year)
     return (
-        head(TITLE, DESC)
-        + f'<script type="application/ld+json">{jsonld()}</script></head><body><div class="wrap">'
-        + f'<header><h1>{e(A["name"])}</h1></header>'
-        + f'<main><section class="release" id="{R["slug"]}" aria-labelledby="release-title">'
-        + f'<p class="label">Latest release</p>'
+        head(TITLE, DESC, preload=preload)
+        + f'<script type="application/ld+json">{jsonld()}</script></head><body>'
+        + '<a class="skip up" href="#listen">Skip to the latest release</a>'
+        + f'<header class="top"><a class="brand" href="/">{e(A["name"])}</a>'
+        + '<nav class="up" aria-label="Sections"><a href="#listen">Listen</a><a href="#about">About</a><a href="#follow">Follow</a><a href="#contact">Contact</a></nav></header>'
+        + '<main>'
+        + f'<section class="hero" aria-labelledby="name">'
+        + f'<img src="{hero}-800.webp" srcset="{hero}-800.webp 800w, {hero}-1400.webp 1400w" sizes="100vw" width="1400" height="1400" alt="{e(H["alt"])}" fetchpriority="high">'
+        + '<div class="hero-in">'
+        + f'<h1 id="name">{e(A["name"])}</h1>'
+        + f'<p class="cta"><em>New {e(R["type"].lower())}</em><a class="btn up" href="#listen">Listen to {title}</a></p>'
+        + '</div></section>'
+        + f'<section class="sec release" id="listen" aria-labelledby="release-title">'
         + '<picture>'
-        + f'<source type="image/webp" srcset="{img}-640.webp 640w, {img}-1200.webp 1200w" sizes="(min-width:32.5rem) 30rem, calc(100vw - 2.5rem)">'
-        + f'<img src="{img}-640.jpg" width="640" height="640" alt="{e(R["image"]["alt"])}" fetchpriority="high">'
+        + f'<source type="image/webp" srcset="{img}-640.webp 640w, {img}-1200.webp 1200w" sizes="(min-width:60rem) 42rem, calc(100vw - 2rem)">'
+        + f'<img class="cover" src="{img}-640.jpg" width="640" height="640" alt="{e(R["image"]["alt"])}" loading="lazy" decoding="async">'
         + '</picture>'
         + '<div class="info">'
-        + f'<h2 class="title" id="release-title">{e(R["title"])}</h2>'
-        + f'<p class="meta">{e(R["type"])} · <time datetime="{R["date"]}">{date.day} {date.strftime("%B %Y")}</time></p>'
-        + f'<ul class="listen" aria-label="Listen to {e(R["title"])}">{links}</ul>'
+        + '<p class="up"><em>Latest release</em></p>'
+        + f'<h2 class="title" id="release-title">{title}</h2>'
+        + f'<p class="meta up">{e(R["type"])} · <time datetime="{R["date"]}">{date.day} {date.strftime("%B %Y")}</time></p>'
+        + f'<ul class="listen" aria-label="Listen to {title}">{links}</ul>'
         + '</div></section>'
-        + f'<section class="about" aria-labelledby="about"><h2 id="about">About</h2><p>{A["bio"]}</p></section>'
+        + f'<section class="sec about" id="about" aria-labelledby="about-h"><h2 id="about-h">About</h2><p>{A["bio"]}</p></section>'
         + '</main>'
-        + '<footer>'
-        + f'<nav aria-labelledby="follow"><h2 id="follow">Follow {e(A["name"])}</h2><ul class="follow">{follow}</ul></nav>'
-        + f'<h2>Contact</h2><p class="contact"><a href="mailto:{A["contact"]}">{A["contact"]}</a></p>'
-        + f'<small>© {date.year if date.year > dt.date.today().year else dt.date.today().year} {e(A["name"])}. Official website.</small>'
-        + '</footer></div></body></html>\n'
+        + '<footer class="sec foot">'
+        + f'<nav id="follow" aria-labelledby="follow-h"><h2 id="follow-h">Follow</h2><ul class="follow">{follow}</ul></nav>'
+        + f'<div id="contact"><h2>Contact</h2><a class="mail" href="mailto:{A["contact"]}">{A["contact"]}</a></div>'
+        + f'<p class="legal up">© {year} {e(A["name"])} · Official website</p>'
+        + '</footer>'
+        + f'<aside class="bar up" aria-label="Listen now"><b>Listen now</b><i>{e(A["name"])} — {title}</i><span>{bar_links}</span></aside>'
+        + '</body></html>\n'
     )
 
 
 def notfound():
     return (head(f"Page not found – {A['name']}", "This page does not exist.", canonical=False, robots="noindex")
-            + f'</head><body><div class="wrap"><header><p class="brand"><a href="/">{e(A["name"])}</a></p></header>'
-            + '<main><h1 class="title">Page not found</h1>'
-            + f'<p><a href="/">Go to the official website of {e(A["name"])}</a></p></main></div></body></html>\n')
+            + '</head><body>'
+            + f'<header class="top"><a class="brand on" href="/">{e(A["name"])}</a></header>'
+            + '<main class="nf"><p class="up"><em>Error 404</em></p><h1>Page not found</h1>'
+            + f'<p><a class="btn up" href="/">Back to {e(A["name"])}</a></p></main></body></html>\n')
 
 
 def htaccess():
@@ -197,7 +245,7 @@ Header always set Content-Security-Policy "{csp}"
 <FilesMatch "\\.(html)$">
 Header set Cache-Control "public, max-age=300, must-revalidate"
 </FilesMatch>
-<FilesMatch "\\.(webp|jpg|png|svg|ico)$">
+<FilesMatch "\\.(webp|jpg|png|svg|ico|woff2)$">
 Header set Cache-Control "public, max-age=31536000, immutable"
 </FilesMatch>
 </IfModule>
@@ -214,8 +262,8 @@ AddDefaultCharset utf-8
 
 def favicons():
     svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
-           '<rect width="64" height="64" rx="12" fill="#070f1c"/>'
-           '<circle cx="32" cy="32" r="16" fill="#ece9e2"/></svg>\n')
+           '<rect width="64" height="64" rx="12" fill="#000"/>'
+           '<circle cx="32" cy="32" r="16" fill="#f2eee8"/></svg>\n')
     (DIST / "favicon.svg").write_text(svg)
     try:
         from PIL import Image, ImageDraw
@@ -225,9 +273,9 @@ def favicons():
         s = 4 * size
         im = Image.new("RGBA", (s, s), (0, 0, 0, 0))
         d = ImageDraw.Draw(im)
-        d.rounded_rectangle([0, 0, s - 1, s - 1], radius=s * 12 // 64 if rounded else 0, fill="#070f1c")
+        d.rounded_rectangle([0, 0, s - 1, s - 1], radius=s * 12 // 64 if rounded else 0, fill="#000")
         r = s * 16 // 64
-        d.ellipse([s // 2 - r, s // 2 - r, s // 2 + r, s // 2 + r], fill="#ece9e2")
+        d.ellipse([s // 2 - r, s // 2 - r, s // 2 + r, s // 2 + r], fill="#f2eee8")
         return im.resize((size, size), Image.LANCZOS)
     draw(32, True).save(DIST / "favicon.ico", sizes=[(32, 32)])
     draw(180, False).convert("RGB").save(DIST / "apple-touch-icon.png", optimize=True)
@@ -255,8 +303,28 @@ def ensure_images():
     print("cover images generated from", src)
 
 
+FONT_URL = "https://cdn.jsdelivr.net/npm/@fontsource/bebas-neue@5.3.0/files/bebas-neue-latin-400-normal.woff2"
+
+
+def ensure_assets():
+    """Fetch the display font and derive the small hero image if they are missing."""
+    font = ROOT / "fonts" / "bebas-neue.woff2"
+    if not font.exists():
+        font.parent.mkdir(exist_ok=True)
+        req = urllib.request.Request(FONT_URL, headers={"User-Agent": "djouher.com build"})
+        font.write_bytes(urllib.request.urlopen(req, timeout=60).read())
+        print("font downloaded")
+    hero = ROOT / S["hero"]["image"]
+    big, small = hero.with_name(hero.name + "-1400.webp"), hero.with_name(hero.name + "-800.webp")
+    if big.exists() and not small.exists():
+        from PIL import Image
+        Image.open(big).convert("RGB").resize((800, 800), Image.LANCZOS).save(small, "WEBP", quality=68, method=6)
+        print("hero-800 generated")
+
+
 def main():
     ensure_images()
+    ensure_assets()
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir()
@@ -273,8 +341,9 @@ def main():
         (DIST / "CNAME").write_text(D.split("://")[1] + "\n")
         (DIST / ".nojekyll").write_text("")
     favicons()
-    if (ROOT / "img").exists():
-        shutil.copytree(ROOT / "img", DIST / "img")
+    for d in ("img", "fonts"):
+        if (ROOT / d).exists():
+            shutil.copytree(ROOT / d, DIST / d)
     for f in sorted(DIST.rglob("*")):
         if f.is_file():
             print(f"{f.stat().st_size:>8}  {f.relative_to(DIST)}")
