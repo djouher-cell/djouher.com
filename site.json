@@ -1,0 +1,89 @@
+{
+  "domain": "https://djouher.com",
+  "artist": {
+    "name": "Djouher",
+    "description": "North African singer from Kabylie blending indie pop with subtle Arabic influences.",
+    "bio": "Djouher is a North African singer who grew up between the city and the mountains of Kabylie, Algeria. Since 2018 she has blended indie pop with subtle Arabic influences, moving between joy, sadness and loneliness. After her debut EP <cite>Kingdom</cite> and a selection for Spotify Arabia’s SAWTIK programme, she returns in 2026 with new music made with producer Lead Major, opening with the single <cite>I Killed Her</cite>.",
+    "genre": [
+      "Indie pop",
+      "Pop"
+    ],
+    "contact": "contact@3rdrecords.com",
+    "profiles": [
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/iamdjouher/"
+      },
+      {
+        "name": "TikTok",
+        "url": "https://www.tiktok.com/@iamdjouher"
+      },
+      {
+        "name": "YouTube",
+        "url": "https://www.youtube.com/@Djouher"
+      },
+      {
+        "name": "Spotify",
+        "url": "https://open.spotify.com/artist/75opyvDai90a20RL9VSa7D"
+      },
+      {
+        "name": "Apple Music",
+        "url": "https://music.apple.com/artist/djouher/1437205296"
+      },
+      {
+        "name": "Deezer",
+        "url": "https://www.deezer.com/artist/51759002"
+      },
+      {
+        "name": "SoundCloud",
+        "url": "https://soundcloud.com/andjouher"
+      }
+    ],
+    "sameAsExtra": [
+      "https://www.youtube.com/channel/UComqwm_Sag7al_1pwWaro0w"
+    ]
+  },
+  "release": {
+    "title": "I Killed Her",
+    "slug": "i-killed-her",
+    "type": "Single",
+    "date": "2026-03-27",
+    "duration": "PT2M56S",
+    "image": {
+      "base": "img/i-killed-her",
+      "alt": "Cover art for I Killed Her by Djouher: the singer, dressed in white, crouches beneath a glowing full moon on a deep blue stage.",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/67/3f/e5/673fe50f-cdd4-919e-659b-43344641d167/79d5df72-3f3d-435d-addc-9eb7db5258b7.jpg/3000x3000bb.jpg"
+    },
+    "links": [
+      {
+        "name": "Spotify",
+        "url": "https://open.spotify.com/album/1ITFYNsW5lqz9MgU9kOY9h"
+      },
+      {
+        "name": "Apple Music",
+        "url": "https://music.apple.com/album/i-killed-her-single/1879817761"
+      },
+      {
+        "name": "YouTube",
+        "label": "Watch the video",
+        "url": "https://www.youtube.com/watch?v=vQgVZkjjlTA"
+      },
+      {
+        "name": "Deezer",
+        "url": "https://www.deezer.com/album/926310991"
+      },
+      {
+        "name": "Amazon Music",
+        "url": "https://music.amazon.com/albums/B0GPY423BY"
+      },
+      {
+        "name": "YouTube Music",
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_lnwMPs8jboReWCHRCRNu1iUOoXkDR1s0E"
+      },
+      {
+        "name": "Tidal",
+        "url": "https://tidal.com/album/501900586"
+      }
+    ]
+  }
+}
